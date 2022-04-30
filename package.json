@@ -1,0 +1,19 @@
+{
+  "name": "ejercicio_node",
+  "version": "1.0.0",
+  "description": "Node",
+  "main": "server.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RaulGomez99/Daw-Diw.git"
+  },
+  "author": "Raúl Gómez",
+  "license": "ISC",
+  "homepage": "https://github.com/RaulGomez99/Daw-Diw#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

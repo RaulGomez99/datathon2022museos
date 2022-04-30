@@ -1,0 +1,28 @@
+header{
+    text-align: left;
+    background-color: #252525;
+    color: lightgray;
+    height: 8vh;
+    width: 100%;
+}
+.body{
+    height: 90vh;
+    margin-left: 0px;
+    overflow: hidden;
+}
+
+body{
+    background-color: #252525;
+}
+
+.imge{
+    position:absolute;
+    display: none;
+    width: 50px;
+    height: 50px;
+    
+}
+
+a:hover + .imge{
+    display: block;
+}

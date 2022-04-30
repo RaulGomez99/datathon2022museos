@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/main.css">
+    <!--Cosas de leaflet-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+   integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+   crossorigin=""/>
+   <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+   integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+   crossorigin=""></script>
+   <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js"></script>
+   <link rel="stylesheet" href="./libs/makercluseter.css">
+
+   <!--Carga de datos-->
+   <script src="./datos/datos_museos.js"></script>
+   <script src="./datos/materiales.js"></script>
+   <script src="./datos/museos.js"></script>
+   <script src="./datos/tecnicas.js"></script>
+
+   <script src="./js/map.js"></script>
+
+
+    <title>Datathon 2022</title>
+</head>
+<body>
+    <header>
+        Escriba nombre del museo para filtrar: <input id = "nombreMuseo" type = "text">
+        <select id="selecciona">
+            <option value="">Elige Provincia</option>
+            <option value="01">Álava/Araba</option>
+            <option value="02">Albacete</option>
+            <option value="03">Alicante</option>
+            <option value="04">Almería</option>
+            <option value="33">Asturias</option>
+            <option value="05">Ávila</option>
+            <option value="06">Badajoz</option>
+            <option value="07">Baleares</option>
+            <option value="08">Barcelona</option>
+            <option value="09">Burgos</option>
+            <option value="10">Cáceres</option>
+            <option value="11">Cádiz</option>
+            <option value="39">Cantabria</option>
+            <option value="12">Castellón</option>
+            <option value="51">Ceuta</option>
+            <option value="13">Ciudad Real</option>
+            <option value="14">Córdoba</option>
+            <option value="16">Cuenca</option>
+            <option value="17">Gerona/Girona</option>
+            <option value="18">Granada</option>
+            <option value="19">Guadalajara</option>
+            <option value="20">Guipúzcoa/Gipuzkoa</option>
+            <option value="21">Huelva</option>
+            <option value="22">Huesca</option>
+            <option value="23">Jaén</option>
+            <option value="15">La Coruña/A Coruña</option>
+            <option value="26">La Rioja</option>
+            <option value="35">Las Palmas</option>
+            <option value="24">León</option>
+            <option value="25">Lérida/Lleida</option>
+            <option value="27">Lugo</option>
+            <option value="28">Madrid</option>
+            <option value="29">Málaga</option>
+            <option value="52">Melilla</option>
+            <option value="30">Murcia</option>
+            <option value="31">Navarra</option>
+            <option value="32">Orense/Ourense</option>
+            <option value="34">Palencia</option>
+            <option value="36">Pontevedra</option>
+            <option value="37">Salamanca</option>
+            <option value="40">Segovia</option>
+            <option value="41">Sevilla</option>
+            <option value="42">Soria</option>
+            <option value="43">Tarragona</option>
+            <option value="38">Tenerife</option>
+            <option value="44">Teruel</option>
+            <option value="45">Toledo</option>
+            <option value="46">Valencia</option>
+            <option value="47">Valladolid</option>
+            <option value="48">Vizcaya/Bizkaia</option>
+            <option value="49">Zamora</option>
+            <option value="50">Zaragoza</option>
+          </select>
+          <select id="material">
+            <option value="">Elige Material</option>
+            <option value="Adhesivo">Adhesivo</option>
+            <option value="Aditivo">Aditivo</option>
+            <option value="Barniz">Barniz</option>
+            <option value="Cuero">Cuero</option>
+            <option value="Disolvente">Disolvente</option>
+            <option value="Fibra">Fibra</option>
+            <option value="Lamina">Lamina</option>
+            <option value="Madera">Madera</option>
+            <option value="Materia colorante">Materia colorante</option>
+            <option value="Materia elaborada inorganica">Materia elaborada inorganica</option>
+            <option value="Materia elaborada organica">Materia elaborada organica</option>
+            <option value="Materia fotografica">Materia fotografica</option>
+            <option value="Materia prima">Materia prima</option>
+            <option value="Pasta">Pasta</option>
+            <option value="Piedra">Piedra</option>
+            <option value="Pigmento">Pigmento</option>
+            <option value="Pintura">Pintura</option>
+            <option value="Planta textil">Planta textil</option>
+            <option value="Polimeros">Polimeros</option>
+            <option value="Soporte">Soporte</option>
+            <option value="Textil">Textil</option>
+          </select>
+          <select id="tecnica">
+            <option value="">Elige Técnica</option>
+            <option value="Ceramica">Ceramica</option>
+            <option value="Cesteria">Cesteria</option>
+            <option value="Comun">Comun</option>
+            <option value="Construccion">Construccion</option>
+            <option value="Cuero">Cuero</option>
+            <option value="Escultorica">Escultorica</option>
+            <option value="Fotrogrofica">Fotrogrofica</option>
+            <option value="Gliptica">Gliptica</option>
+            <option value="Grabacion">Grabacion</option>
+            <option value="Grafica">Grafica</option>
+            <option value="Joyeria">Joyeria</option>
+            <option value="Libros">Libros</option>
+            <option value="Madera">Madera</option>
+            <option value="Metal">Metal</option>
+            <option value="Papel">Papel</option>
+            <option value="Pictorica">Pictorica</option>
+            <option value="Plumaria">Plumaria</option>
+            <option value="Textil">Textil</option>
+            <option value="Union">Union</option>
+            <option value="Vidreo">Vidreo</option>
+        </select>
+    </header>
+    <div class = "body" id = "mapa">
+    </div>
+</body>
+</html>
